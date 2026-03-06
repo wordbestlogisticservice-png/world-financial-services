@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Transactions — World Financial Bank</title>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body data-page="transactions" class="app-page">
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-inner">
+        <a href="dashboard.html" class="nav-logo">
+          <img src="images/logo.svg" alt="WFB"/>
+        </a>
+        <div class="nav-menu" id="nav-menu">
+          <a href="dashboard.html"    class="nav-link">Dashboard</a>
+          <a href="transactions.html" class="nav-link active">Transactions</a>
+          <a href="profile.html"      class="nav-link">Profile</a>
+        </div>
+        <div class="nav-right">
+          <div class="nav-avatar" id="nav-initials">?</div>
+          <span class="nav-username" id="nav-username"></span>
+          <button id="logout-btn" class="btn btn-outline btn-sm">Logout</button>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="page-main">
+
+    <div class="page-header">
+      <div class="page-title">Transaction History</div>
+      <div class="page-sub">All your account activity in one place · <span id="txn-page-user"></span></div>
+    </div>
+
+    <!-- Filter -->
+    <div class="filter-bar">
+      <input id="txn-filter" type="search" class="form-control"
+             placeholder="🔍  Search transactions by description or status…"/>
+    </div>
+
+    <!-- Table -->
+    <div class="table-wrap anim-fadeup">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="txn-tbody">
+          <tr><td colspan="4" class="no-data">Loading…</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Back link -->
+    <div style="margin-top:var(--sp-6);text-align:center;">
+      <a href="dashboard.html" class="btn btn-outline btn-sm">← Back to Dashboard</a>
+    </div>
+
+  </main>
+
+  <!-- Smartsupp Live Chat — add script here -->
+
+  <script src="js/app.js"></script>
+</body>
+</html>

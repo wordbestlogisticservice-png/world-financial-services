@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard — World Financial Bank</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <!-- jsPDF for statement download -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body data-page="dashboard" class="app-page">
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-inner">
+        <a href="dashboard.html" class="nav-logo">
+          <img src="images/logo.svg" alt="WFB"/>
+        </a>
+        <div class="nav-menu" id="nav-menu">
+          <a href="dashboard.html"   class="nav-link active">Dashboard</a>
+          <a href="transactions.html" class="nav-link">Transactions</a>
+          <a href="profile.html"     class="nav-link">Profile</a>
+          <hr style="border-color:var(--card-border);display:none;" class="mobile-divider"/>
+          <button id="logout-btn-mobile" class="btn btn-ghost btn-sm" style="display:none;"
+                  onclick="document.getElementById('logout-btn').click()">Logout</button>
+        </div>
+        <div class="nav-right">
+          <div class="nav-avatar" id="nav-initials">?</div>
+          <span class="nav-username" id="nav-username"></span>
+          <button id="logout-btn" class="btn btn-outline btn-sm">Logout</button>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="page-main">
+
+    <!-- Greeting -->
+    <div class="page-header">
+      <div class="page-title" id="dash-greeting">Hello 👋</div>
+      <div class="page-sub">Here's your financial overview</div>
+    </div>
+
+    <!-- BALANCE CARD -->
+    <div class="balance-card anim-fadeup">
+      <div class="bal-top">
+        <div>
+          <div class="bal-label">Total Balance</div>
+        </div>
+        <div class="bal-chip">● Active</div>
+      </div>
+
+      <div class="bal-amount" id="dash-balance">$0.00</div>
+
+      <div class="bal-details">
+        <div class="bal-detail-row">
+          <span>Account No:</span>
+          <span class="bal-detail-val" id="dash-account">—</span>
+        </div>
+        <div class="bal-detail-row">
+          <span>IBAN:</span>
+          <span class="bal-detail-val" id="dash-iban" style="font-size:0.68rem;">—</span>
+        </div>
+      </div>
+
+      <div class="card-chip-inner"></div>
+      <div class="card-chip"></div>
+    </div>
+
+    <!-- QUICK ACTIONS -->
+    <div class="quick-actions anim-fadeup delay-1">
+      <button class="act-btn" id="transfer-btn">
+        <div class="act-icon">💸</div>
+        <div class="act-label">Transfer</div>
+      </button>
+      <a href="transactions.html" class="act-btn">
+        <div class="act-icon">📋</div>
+        <div class="act-label">History</div>
+      </a>
+      <button class="act-btn" id="download-btn">
+        <div class="act-icon">📄</div>
+        <div class="act-label">Statement</div>
+      </button>
+      <a href="profile.html" class="act-btn">
+        <div class="act-icon">👤</div>
+        <div class="act-label">Profile</div>
+      </a>
+    </div>
+
+    <!-- RECENT TRANSACTIONS -->
+    <div class="anim-fadeup delay-2">
+      <div class="section-hdr">
+        <div class="section-hdr-title">Recent Transactions</div>
+        <a href="transactions.html" class="section-hdr-link">View all →</a>
+      </div>
+      <div id="recent-txns">
+        <p class="no-data">Loading…</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- TRANSFER MODAL -->
+  <div class="modal-overlay" id="transfer-modal">
+    <div class="modal">
+      <div class="modal-hdr">
+        <div class="modal-title">Send Money 💸</div>
+        <button class="modal-close" id="close-modal">✕</button>
+      </div>
+
+      <div id="transfer-alert" class="alert alert-error"></div>
+
+      <form id="transfer-form" novalidate>
+        <div class="form-group">
+          <label class="form-label">Recipient Name</label>
+          <input id="tr-name" type="text" class="form-control" placeholder="e.g. Jane Smith" required/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Recipient Account Number</label>
+          <input id="tr-account" type="text" class="form-control" placeholder="10-digit account number" required/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Amount (USD)</label>
+          <input id="tr-amount" type="number" class="form-control" placeholder="0.00" min="1" step="0.01" required/>
+        </div>
+        <button type="submit" class="btn btn-gold btn-block btn-lg" style="margin-top:var(--sp-2);">
+          Send Money →
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Smartsupp Live Chat — add script here -->
+
+  <script src="js/app.js"></script>
+</body>
+</html>

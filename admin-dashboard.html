@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard — World Financial Bank</title>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body data-page="admin-dashboard" class="app-page">
+
+  <!-- ADMIN BANNER -->
+  <div class="admin-banner">
+    🔐 &nbsp;ADMIN CONTROL PANEL &nbsp;|&nbsp; World Financial Bank
+  </div>
+
+  <!-- ADMIN NAVBAR -->
+  <nav class="admin-nav">
+    <div class="container">
+      <div class="navbar-inner">
+        <a href="admin-dashboard.html" class="nav-logo">
+          <img src="images/logo.svg" alt="WFB Admin"/>
+        </a>
+        <div style="display:flex;align-items:center;gap:var(--sp-4);">
+          <span style="font-size:var(--fs-xs);color:var(--c-gold);font-weight:600;text-transform:uppercase;letter-spacing:.8px;">
+            👤 Administrator
+          </span>
+          <button id="adm-refresh" class="btn btn-ghost btn-sm">↺ Refresh</button>
+          <button id="adm-logout"  class="btn btn-danger btn-sm">Logout</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ADMIN MAIN -->
+  <main class="admin-main">
+
+    <!-- Page title -->
+    <div class="page-header" style="margin-bottom:var(--sp-6);">
+      <div class="page-title">Admin Dashboard</div>
+      <div class="page-sub">Real‑time overview of all users and transactions</div>
+    </div>
+
+    <!-- STATS GRID -->
+    <div class="stats-grid anim-fadeup">
+      <div class="stat-card">
+        <div class="stat-icon">👥</div>
+        <div>
+          <div class="stat-info-lbl">Total Users</div>
+          <div class="stat-info-val" id="adm-users">0</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">💳</div>
+        <div>
+          <div class="stat-info-lbl">Total Transactions</div>
+          <div class="stat-info-val" id="adm-txns">0</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">⬇</div>
+        <div>
+          <div class="stat-info-lbl">Total Deposits</div>
+          <div class="stat-info-val" id="adm-deposits" style="font-size:var(--fs-xl);">$0</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">⬆</div>
+        <div>
+          <div class="stat-info-lbl">Total Transfers</div>
+          <div class="stat-info-val" id="adm-transfers" style="font-size:var(--fs-xl);">$0</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEND ANNOUNCEMENT -->
+    <div class="admin-section anim-fadeup delay-1">
+      <div class="admin-section-title">
+        <span>📢 Send Announcement</span>
+      </div>
+      <div id="announce-alert" class="alert alert-error"></div>
+      <form id="announce-form" style="display:flex;gap:var(--sp-3);flex-wrap:wrap;align-items:flex-end;">
+        <div class="form-group" style="flex:1;min-width:260px;margin-bottom:0;">
+          <label class="form-label" for="announce-msg">Message to all users</label>
+          <input id="announce-msg" type="text" class="form-control"
+                 placeholder="e.g. System maintenance scheduled for Sunday 02:00–04:00 UTC." required/>
+        </div>
+        <button type="submit" class="btn btn-gold btn-lg">Send to All Users</button>
+      </form>
+    </div>
+
+    <!-- ALL USERS TABLE -->
+    <div class="admin-section anim-fadeup delay-2">
+      <div class="admin-section-title">
+        <span>👥 Registered Users</span>
+        <span id="adm-users-count" style="font-size:var(--fs-sm);color:rgba(255,255,255,.5);"></span>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Account No.</th>
+              <th>IBAN</th>
+              <th>Balance</th>
+              <th>Joined</th>
+            </tr>
+          </thead>
+          <tbody id="adm-users-tbody">
+            <tr><td colspan="6" class="no-data">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ALL TRANSACTIONS TABLE -->
+    <div class="admin-section anim-fadeup delay-3">
+      <div class="admin-section-title">
+        <span>💳 All Transactions (Latest 60)</span>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>User</th>
+              <th>Description</th>
+              <th>Amount</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="adm-txns-tbody">
+            <tr><td colspan="5" class="no-data">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Smartsupp Live Chat — add script here -->
+
+  <script src="js/app.js"></script>
+</body>
+</html>
